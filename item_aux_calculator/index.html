@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<title>#item_id_aux Calculator</title>
+<h2>#item_id_aux Calculator for Minecraft Bedrock Edition</h2>
+<p></p>
+<p>This is a calculator to determine the item ids that can be attached to a UI. Minecraft does a special calculation to determine these values and this
+tool repeats those calculations. This tool will return a value used to go along with #item_id_aux in Minecraft UI files.
+There are two parts to this tool since the calculation is different: items and blocks.
+You will need the item or block ID (the DEC number next to the icon on the Wiki) to do this calculation, which can be found at: <a href="https://minecraft.gamepedia.com/Bedrock_Edition_data_value">https://minecraft.gamepedia.com/Bedrock_Edition_data_value</a>.
+</p>
+<br>
+<h3>#item_id_aux Calculator for Blocks</h3>
+
+</head>
+
+<body>
+<link rel="Icon" type="image/x-icon" href="/images/lukas.ico">
+
+<input type="text" placeholder="Block ID" id="itemInput">
+<br>
+<br>
+<button type="button" onclick="getInputValue();">Return Block #item_id_aux Value</button>
+
+
+
+<script>
+
+function getInputValue(){
+
+// Selecting the input element and get its value 
+
+var minecraft_id = document.getElementById("itemInput").value;
+
+
+
+// Displaying the value
+
+let data_value=0b0;
+
+let is_block=true
+
+let calculation = (is_block && minecraft_id > 255 ? 255 - minecraft_id : minecraft_id) << 16 | data_value;
+
+alert(calculation)
+
+}
+
+</script>
+
+<br>
+<br>
+<br>
+<h3>#item_id_aux Calculator for Items</h3>
+
+<input type="text" placeholder="Item ID" id="itemInput2">
+<br>
+<br>
+<button type="button" onclick="getInputValue2();">Return Item #item_id_aux Value</button>
+
+<script>
+
+function getInputValue2(){
+
+// Selecting the input element and get its value 
+
+var minecraft_id = document.getElementById("itemInput2").value;
+
+
+
+// Displaying the value
+
+let data_value=0b0;
+
+let is_block=false
+
+let calculation = (is_block && minecraft_id > 255 ? 255 - minecraft_id : minecraft_id) << 16 | data_value;
+
+alert(calculation)
+
+}
+
+</script>
+
+</body>
+
+</html>
+
