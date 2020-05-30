@@ -31,7 +31,7 @@ You will need the item or block ID (the DEC number next to the icon on the Wiki)
 <body>
 <link rel="Icon" type="image/x-icon" href="/images/lukas.ico">
 
-<input type="text" placeholder="Block ID" id="itemInput">
+<input type="text" placeholder="Block ID" id="itemInput"><p>   </p><input type="text" placeholder="Block Data" id="blockstateInput">
 <br>
 <br>
 <button type="button" onclick="getInputValue();">Return Block #item_id_aux Value</button>
@@ -45,7 +45,7 @@ function getInputValue(){
 // Selecting the input element and get its value 
 
 var minecraft_id = document.getElementById("itemInput").value;
-
+var blockstate_data = document.getElementById("blockstateInput").value;
 
 
 // Displaying the value
@@ -54,7 +54,7 @@ let data_value=0b0;
 
 let is_block=true
 
-let calculation = (is_block && minecraft_id > 255 ? 255 - minecraft_id : minecraft_id) << 16 | data_value;
+let calculation = (is_block && minecraft_id > 255 ? 255 - minecraft_id : minecraft_id) << 16 | data_value + blockstate_data;
 
 alert(calculation)
 
@@ -67,7 +67,7 @@ alert(calculation)
 <br>
 <h3>#item_id_aux Calculator for Items</h3>
 
-<input type="text" placeholder="Item ID" id="itemInput2">
+<input type="text" placeholder="Item ID" id="itemInput2"><p>   </p><input type="text" placeholder="Item Data" id="blockstateInput2">
 <br>
 <br>
 <button type="button" onclick="getInputValue2();">Return Item #item_id_aux Value</button>
@@ -79,7 +79,7 @@ function getInputValue2(){
 // Selecting the input element and get its value 
 
 var minecraft_id = document.getElementById("itemInput2").value;
-
+var blockstate_data = document.getElementById("blockstateInput2").value;
 
 
 // Displaying the value
@@ -88,7 +88,7 @@ let data_value=0b0;
 
 let is_block=false
 
-let calculation = (is_block && minecraft_id > 255 ? 255 - minecraft_id : minecraft_id) << 16 | data_value;
+let calculation = (is_block && minecraft_id > 255 ? 255 - minecraft_id : minecraft_id) << 16 | data_value + blockstate_data;
 
 alert(calculation)
 
