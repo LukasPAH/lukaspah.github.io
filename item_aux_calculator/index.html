@@ -1,42 +1,101 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="Icon" type="image/x-icon" href="images/lukas_blue_transparent.ico">
+<title>Item AUX ID Calculator</title>
+<html>
+<body style="background-color:#121212">
 <head>
+<style>
 
-<meta charset="utf-8">
+h1.impact {
+  font-family: Verdana, Geneva, sans-serif;
+}
 
-<title>#item_id_aux Calculator</title>
-<h2>#item_id_aux Calculator for Minecraft Bedrock Edition</h2>
-
-<h3>Update: Please Read!!!</h3>
-<p>If you are looking for a list of block and item #item_id_aux values, please click the link below:</p>
-<a href="/item_aux_calculator/item_id_aux.html">List of Block and Item #item_id_aux Values</a>
-
-<br>
-<br>
-<br>
-
-<p></p>
-<p>This is a calculator to determine the item ids that can be attached to a UI. Minecraft does a special calculation to determine these values and this
-tool repeats those calculations. This tool will return a value used to go along with #item_id_aux in Minecraft UI files.
-There are two parts to this tool since the calculation is different: items and blocks.
-You will need the item or block ID (the DEC number next to the icon on the Wiki) to do this calculation, which can be found at: <a href="https://minecraft.gamepedia.com/Bedrock_Edition_data_value">https://minecraft.gamepedia.com/Bedrock_Edition_data_value</a>.
-</p>
-<br>
-<h3>#item_id_aux Calculator for Blocks</h3>
-
+</style>
 </head>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <body>
-<link rel="Icon" type="image/x-icon" href="/images/lukas.ico">
 
-<input type="text" placeholder="Block ID" id="itemInput"><p>   </p><input type="text" placeholder="Block Data" id="blockstateInput">
+<// Title Panel //>
+
+<div class="w3-container">
+  <div class="w3-panel w3-round-xxlarge w3-black" style="box-shadow: 5px 5px 5px #161616">
+    <h1 class="impact" style="color:#64B5F6; text-align: center; white-space: nowrap">Item AUX ID Calculator
+	  <div style="float:right">
+	    <a href="https://twitter.com/MCGaming_Lukas">
+          <img src="images/twitter.png" alt="Twitter" style="width:30px;height:30px">
+		</a>
+		<div style="float:right; padding-left:8px">
+		  <a href="https://www.youtube.com/channel/UCqcXHkZw7R_VUgj5YAgdpCg">
+		    <img src="images/youtube.png" alt="YouTube" style="width:30px;height:30px">
+		  </a>
+		</div>
+	  </div>
+	  <div style="float:left">
+	    <a href="/">
+	      <img src="images/lukas_blue_transparent.png" alt="Home" style="width:50px;height:50px; padding-bottom:2px">
+		</a>
+	  </div>
+	</h1>
+	
+  </div>
+</div>
 <br>
+
+<// Calculation Panels //>
+
+<div class="w3-container">
+  <div class="w3-panel w3-round-xlarge w3-dark-grey" style="width:45%; float:left; box-shadow: 5px 5px 5px #000000"">
+    <h3 class="impact" style="color:#4D8CF0; text-align: center">AUX ID Calculator for Blocks
+	<p></p>
+	<button onclick="document.getElementById('itemInput').value = ''; document.getElementById('blockstateInput').value = ''; document.getElementById('outputValue').value = ''">Clear Contents</button>
+	<br>
+	<br>
+	<input type="text" placeholder="Block ID" id="itemInput" style="width:150px; text-align:center">
+	<p></p>
+	<input type="text" placeholder="Block Data" id="blockstateInput" style="width:150px; text-align:center">
+	<p></p>
+	<button type="button" onclick="getInputValue();">Return Block AUX ID</button>
+	<p></p>
+	<input type="text" name="outputValue" id="outputValue" style="width:150px; text-align:center" placeholder="AUX ID Value" readonly></input>
+	<p></p>
+	<button onclick="copyFunctionBlock()">Copy AUX ID</button>
+	</h3>
+  </div>
+  <div class="w3-panel w3-round-xlarge w3-dark-grey" style="width:45%; float:right; box-shadow: 5px 5px 5px #000000"">
+    <h3 class="impact" style="color:#4D8CF0; text-align: center">AUX ID Calculator for Items
+	<p></p>
+	<button onclick="document.getElementById('itemInput2').value = ''; document.getElementById('blockstateInput2').value = ''; document.getElementById('outputValue2').value = ''">Clear Contents</button>
+	<br>
+	<br>
+	<input type="text" placeholder="Item ID" id="itemInput2" style="width:150px; text-align:center">
+	<p></p>
+	<input type="text" placeholder="Item Data" id="blockstateInput2" style="width:150px; text-align:center">
+	<p></p>
+	<button type="button" onclick="getInputValue2();">Return Item AUX ID</button>
+	<p></p>
+	<input type="text" name="outputValue2" id="outputValue2" style="width:150px; text-align:center" placeholder="AUX ID Value" readonly></input>
+	<p></p>
+	<button onclick="copyFunctionItem()">Copy AUX ID</button>
+	</h3>  
+  </div>
+</div>
 <br>
-<button type="button" onclick="getInputValue();">Return Block #item_id_aux Value</button>
 
+<// List Panel //>
 
+<div class="w3-container">
+  <a href="/item_aux_calculator/item_id_aux.html">
+    <div class="w3-panel w3-round-xxlarge w3-black" style="box-shadow: 5px 5px 5px #161616">
+      <h1 class="impact" style="color:#64B5F6; text-align: center; white-space: nowrap">List of all Known AUX IDs
+	  </h1>
+    </div>
+  </a>
+</div>
+
+<// Block AUX Script //>
 
 <script>
 
@@ -56,21 +115,13 @@ let is_block=true
 
 let calculation = (is_block && minecraft_id > 255 ? 255 - minecraft_id : minecraft_id) << 16 | data_value + blockstate_data;
 
-alert(calculation)
+document.getElementsByName('outputValue')[0].value= calculation;
 
 }
 
 </script>
 
-<br>
-<br>
-<br>
-<h3>#item_id_aux Calculator for Items</h3>
-
-<input type="text" placeholder="Item ID" id="itemInput2"><p>   </p><input type="text" placeholder="Item Data" id="blockstateInput2">
-<br>
-<br>
-<button type="button" onclick="getInputValue2();">Return Item #item_id_aux Value</button>
+<// Item AUX Script //>
 
 <script>
 
@@ -90,17 +141,49 @@ let is_block=false
 
 let calculation = (is_block && minecraft_id > 255 ? 255 - minecraft_id : minecraft_id) << 16 | data_value + blockstate_data;
 
-alert(calculation)
+document.getElementsByName('outputValue2')[0].value= calculation;
 
 }
 
 </script>
 
-<br>
-<br>
-<a href="/">Home Page</a>
+<// Copy Block ID Script //>
+
+<script>
+
+function copyFunctionBlock() {
+  /* Get the text field */
+  var copyText = document.getElementById("outputValue");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+}
+
+</script>
+
+<// Copy Item ID Script //>
+
+<script>
+
+function copyFunctionItem() {
+  /* Get the text field */
+  var copyText = document.getElementById("outputValue2");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+}
+
+</script>
 
 </body>
-
 </html>
-
