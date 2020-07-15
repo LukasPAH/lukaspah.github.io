@@ -50,12 +50,17 @@ h1.impact {
   <div class="w3-panel w3-round-xlarge w3-dark-grey" style="width:48%; float:left; box-shadow: 5px 5px 5px #000000"">
     <h3 class="impact" style="color:#4D8CF0; text-align: center">AUX ID Calculator for Blocks
 	<p></p>
-	<button onclick="document.getElementById('itemInput').value = ''; document.getElementById('blockstateInput').value = ''; document.getElementById('outputValue').value = ''">Clear Contents</button>
+	<button onclick="document.getElementById('blockEnch').value = '0'; document.getElementById('itemInput').value = ''; document.getElementById('blockstateInput').value = ''; document.getElementById('outputValue').value = ''">Clear Contents</button>
 	<br>
 	<br>
 	<input type="text" placeholder="Block ID" id="itemInput" style="width:150px; text-align:center">
 	<p></p>
 	<input type="text" placeholder="Block Data" id="blockstateInput" style="width:150px; text-align:center">
+	<p></p>
+	<select id="blockEnch">
+	      <option value="0">No Enchantment Glint</option>
+          <option value="32768">Enable Enchantment Glint</option>
+	</select>
 	<p></p>
 	<button type="button" onclick="getInputValue();">Return Block AUX ID</button>
 	<p></p>
@@ -67,12 +72,17 @@ h1.impact {
   <div class="w3-panel w3-round-xlarge w3-dark-grey" style="width:48%; float:right; box-shadow: 5px 5px 5px #000000"">
     <h3 class="impact" style="color:#4D8CF0; text-align: center">AUX ID Calculator for Items
 	<p></p>
-	<button onclick="document.getElementById('itemInput2').value = ''; document.getElementById('blockstateInput2').value = ''; document.getElementById('outputValue2').value = ''">Clear Contents</button>
+	<button onclick="document.getElementById('itemEnch').value = '0'; document.getElementById('itemInput2').value = ''; document.getElementById('blockstateInput2').value = ''; document.getElementById('outputValue2').value = ''">Clear Contents</button>
 	<br>
 	<br>
 	<input type="text" placeholder="Item ID" id="itemInput2" style="width:150px; text-align:center">
 	<p></p>
 	<input type="text" placeholder="Item Data" id="blockstateInput2" style="width:150px; text-align:center">
+	<p></p>
+	<select id="itemEnch">
+	      <option value="0">No Enchantment Glint</option>
+          <option value="32768">Enable Enchantment Glint</option>
+	</select>
 	<p></p>
 	<button type="button" onclick="getInputValue2();">Return Item AUX ID</button>
 	<p></p>
@@ -105,17 +115,18 @@ function getInputValue(){
 
 var minecraft_id = document.getElementById("itemInput").value;
 var blockstate_data = document.getElementById("blockstateInput").value;
+var ench_bool = document.getElementById("blockEnch").value;
 
-
+var block_data_values = ((blockstate_data*1) + (ench_bool*1))
 // Displaying the value
 
 let data_value=0b0;
 
 let is_block=true
 
-let calculation = (is_block && minecraft_id > 255 ? 255 - minecraft_id : minecraft_id) << 16 | data_value + blockstate_data;
+let calculation = (is_block && minecraft_id > 255 ? 255 - minecraft_id : minecraft_id) << 16 | data_value + block_data_values;
 
-document.getElementsByName('outputValue')[0].value= calculation;
+document.getElementsByName('outputValue')[0].value = calculation;
 
 }
 
@@ -130,7 +141,10 @@ function getInputValue2(){
 // Selecting the input element and get its value 
 
 var minecraft_id = document.getElementById("itemInput2").value;
-var blockstate_data = document.getElementById("blockstateInput2").value;
+var item_blockstate_data = document.getElementById("blockstateInput2").value;
+var ench_bool = document.getElementById("itemEnch").value;
+
+var item_data_values = ((item_blockstate_data*1) + (ench_bool*1))
 
 
 // Displaying the value
@@ -139,7 +153,7 @@ let data_value=0b0;
 
 let is_block=false
 
-let calculation = (is_block && minecraft_id > 255 ? 255 - minecraft_id : minecraft_id) << 16 | data_value + blockstate_data;
+let calculation = (is_block && minecraft_id > 255 ? 255 - minecraft_id : minecraft_id) << 16 | data_value + item_data_values;
 
 document.getElementsByName('outputValue2')[0].value= calculation;
 
