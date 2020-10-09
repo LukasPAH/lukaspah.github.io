@@ -14,18 +14,20 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <link id="shLink" href="item_id_aux_files/sheet002.html">
 <link id="shLink" href="item_id_aux_files/sheet003.html">
 <link id="shLink" href="item_id_aux_files/sheet004.html">
+<link id="shLink" href="item_id_aux_files/sheet005.html">
 
 <link id="shLink">
 
 <script language="JavaScript">
 <!--
- var c_lTabs=4;
+ var c_lTabs=5;
 
  var c_rgszSh=new Array(c_lTabs);
  c_rgszSh[0] = "BLOCK AUX IDS";
  c_rgszSh[1] = "ITEM AUX IDS";
  c_rgszSh[2] = "ITEM AUX IDS (1.16.100.50-55)";
  c_rgszSh[3] = "ITEM AUX IDS (1.16.100.56)";
+ c_rgszSh[4] = "ITEM AUX IDS (1.16.100.59)";
 
 
 
@@ -55,7 +57,7 @@ function fnGetIEVer()
 function fnBuildFrameset()
 {
  var szHTML="<frameset rows=\"*,18\" border=0 width=0 frameborder=no framespacing=0>"+
-  "<frame src=\""+document.all.item("shLink")[3].href+"\" name=\"frSheet\" noresize>"+
+  "<frame src=\""+document.all.item("shLink")[4].href+"\" name=\"frSheet\" noresize>"+
   "<frameset cols=\"54,*\" border=0 width=0 frameborder=no framespacing=0>"+
   "<frame src=\"\" name=\"frScroll\" marginwidth=0 marginheight=0 scrolling=no>"+
   "<frame src=\"\" name=\"frTabs\" marginwidth=0 marginheight=0 scrolling=no>"+
@@ -318,6 +320,10 @@ function fnSetActiveSheet(iSh)
     <x:Name>ITEM AUX IDS (1.16.100.56)</x:Name>
     <x:WorksheetSource HRef="item_id_aux_files/sheet004.html"/>
    </x:ExcelWorksheet>
+   <x:ExcelWorksheet>
+    <x:Name>ITEM AUX IDS (1.16.100.59)</x:Name>
+    <x:WorksheetSource HRef="item_id_aux_files/sheet005.html"/>
+   </x:ExcelWorksheet>
   </x:ExcelWorksheets>
   <x:Stylesheet HRef="item_id_aux_files/stylesheet.css"/>
   <x:WindowHeight>11160</x:WindowHeight>
@@ -325,8 +331,7 @@ function fnSetActiveSheet(iSh)
   <x:WindowTopX>32767</x:WindowTopX>
   <x:WindowTopY>32767</x:WindowTopY>
   <x:TabRatio>825</x:TabRatio>
-  <x:ActiveSheet>3</x:ActiveSheet>
-  <x:FirstVisibleSheet>2</x:FirstVisibleSheet>
+  <x:ActiveSheet>4</x:ActiveSheet>
   <x:ProtectStructure>False</x:ProtectStructure>
   <x:ProtectWindows>False</x:ProtectWindows>
  </x:ExcelWorkbook>
@@ -334,7 +339,7 @@ function fnSetActiveSheet(iSh)
 </head>
 
 <frameset rows="*,39" border=0 width=0 frameborder=no framespacing=0>
- <frame src="item_id_aux_files/sheet004.html" name="frSheet">
+ <frame src="item_id_aux_files/sheet005.html" name="frSheet">
  <frame src="item_id_aux_files/tabstrip.html" name="frTabs" marginwidth=0 marginheight=0>
  <noframes>
   <body>
