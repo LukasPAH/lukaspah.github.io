@@ -1,10 +1,9 @@
 {
     "name": "Durability Viewer Resource Pack",
     "release_date": "2021-01-16",
+    "pack_information": "https://lukaspah.github.io/packs/debug_screen/description.md",
 
     "version": "1.1.1",
     "update_date": "2021-07-25",
-    "download_link": "https://up-to-down.net/193501/DurabilityViewerV111",
-    "pack_information": "test"
-    
+    "download_link": "https://up-to-down.net/193501/DurabilityViewerV111"
 }

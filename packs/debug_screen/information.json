@@ -1,10 +1,10 @@
 {
     "name": "Java Debug Screen Addon",
     "release_date": "2021-01-01",
+    "pack_information": "https://lukaspah.github.io/packs/debug_screen/description.md",
 
     "version": "2.0.1",
     "update_date": "2021-07-25",
-    "download_link": "https://up-to-down.net/193501/DebugPackV201",
-    "pack_information": "test"
+    "download_link": "https://up-to-down.net/193501/DebugPackV201"
     
 }
