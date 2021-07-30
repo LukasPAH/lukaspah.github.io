@@ -4,7 +4,7 @@
 <body onload="redirect()">
     <script>
         function redirect() {
-            fetch('https://lukaspah.github.io/packs/debug_screen.json').then(response => {
+            fetch('https://lukaspah.github.io/packs/debug_screen/information.json').then(response => {
                 return response.json();
             }).then(data => {
                 location.replace(data.download_link);
