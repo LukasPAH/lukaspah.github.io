@@ -1,1 +1,16 @@
-<meta http-equiv="Refresh" content="0; url='https://up-to-down.net/193501/DebugPackV201'"/>
+<!DOCTYPE html>
+<html>
+
+<body onload="redirect()">
+    <script>
+        function redirect() {
+            fetch('https://lukaspah.github.io/packs/debug_screen.json').then(response => {
+                return response.json();
+            }).then(data => {
+                location.replace(data.download_link);
+            });
+        }
+    </script>
+</body>
+
+</html>
