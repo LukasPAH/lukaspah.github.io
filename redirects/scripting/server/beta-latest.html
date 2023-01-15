@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <p1>Downloading requested file.</p1>
+    <body onload="download()">
+        <script>
+            function download() {
+                fetch("https://registry.npmjs.org/@minecraft/server")
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((data) => {
+                        const regex = new RegExp(/[a-zA-Z0-9_.-]+beta.release[a-zA-Z0-9_.-]+/g);
+                        const allVersions = Object.keys(data.versions);
+                        let betaReleaseVersions = [];
+                        for (const item of allVersions) {
+                            if (regex.test(item)) {
+                                betaReleaseVersions.push(item);
+                            }
+                        }
+                        betaReleaseVersions.sort();
+                        betaReleaseVersions.reverse();
+                        location.replace(`https://registry.npmjs.org/@minecraft/server/-/server-${betaReleaseVersions[0]}.tgz`);
+                    });
+            }
+        </script>
+    </body>
+</html>

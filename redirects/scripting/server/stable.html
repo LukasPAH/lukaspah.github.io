@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <p1>Downloading requested file.</p1>
+    <body onload="download()">
+        <script>
+            function download() {
+                fetch("https://registry.npmjs.org/@minecraft/server")
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((data) => {
+                        const latestVersion = data["dist-tags"].latest;
+                        location.replace(`https://registry.npmjs.org/@minecraft/server/-/server-${latestVersion}.tgz`);
+                    });
+            }
+        </script>
+    </body>
+</html>
